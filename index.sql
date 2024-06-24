@@ -113,11 +113,11 @@ GROUP BY categorie.nomCategorie;
 
 -- 13- Afficher les recettes qui contiennent l’ingrédient « Poulet »
 
-SELECT recette.nom
-FROM recette
-JOIN composant ON recette.id_recette = composant.id_recette
-JOIN ingredient ON composant.id_ingredient = ingredient.id_ingredient
-WHERE ingredient.nomIngredient ='Poulet';
+SELECT r.nom
+FROM recette r
+JOIN composant c  ON r.id_recette = c.id_recette
+JOIN ingredient i ON c.id_ingredient = i.id_ingredient
+WHERE i.nomIngredient ='Poulet';
 
 
 -- 14- Mettez à jour toutes les recettes en diminuant leur temps de préparation de 5 minutes
@@ -136,3 +136,21 @@ SET tempsPreparation = tempsPreparation -5;
 
 
 -- 17- Trouver les recettes qui ne nécessitent aucun ingrédient (par exemple la recette de la tasse d’eau chaude qui consiste à verser de l’eau chaude dans une tasse)
+
+SELECT recette.nom 
+FROM recette 
+JOIN composant ON recette.id_recette = composant.id_recette
+WHERE composant.id_ingredient IS NULL;
+
+
+-- 18- Trouver les ingrédients qui sont utilisés dans au moins 3 recettes
+
+
+
+
+-- 19- Ajouter un nouvel ingrédient à une recette spécifique
+
+
+
+
+-- 20- Bonus : Trouver la recette la plus coûteuse de la base de données (il peut y avoir des ex aequo, il est donc exclu d’utiliser la clause LIMIT)
