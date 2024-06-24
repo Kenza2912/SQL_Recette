@@ -43,12 +43,19 @@ CREATE TABLE IF NOT EXISTS `composant` (
   CONSTRAINT `FK_composant_recette` FOREIGN KEY (`id_recette`) REFERENCES `recette` (`id_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recipe_demo.composant : ~4 rows (environ)
+-- Listage des données de la table recipe_demo.composant : ~11 rows (environ)
 INSERT INTO `composant` (`quantite`, `id_ingredient`, `id_recette`) VALUES
-	(8, 3, 1),
-	(5, 4, 2),
-	(5, 9, 2),
-	(5, 7, 2);
+	(1, 3, 1),
+	(1, 9, 2),
+	(1, 7, 2),
+	(1, 4, 2),
+	(1, 11, 3),
+	(1, 10, 3),
+	(1, 12, 3),
+	(1, 13, 12),
+	(1, 4, 12),
+	(1, 8, 13),
+	(1, 14, 2);
 
 -- Listage de la structure de table recipe_demo. ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -57,22 +64,23 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `uniteMesure` varchar(100) NOT NULL DEFAULT '0',
   `prix` float NOT NULL,
   PRIMARY KEY (`id_ingredient`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recipe_demo.ingredient : ~12 rows (environ)
+-- Listage des données de la table recipe_demo.ingredient : ~13 rows (environ)
 INSERT INTO `ingredient` (`id_ingredient`, `nomIngredient`, `uniteMesure`, `prix`) VALUES
-	(1, 'Boeuf', 'g', 10),
+	(1, 'Boeuf', 'kg', 4),
 	(2, 'Oeuf', 'unité', 0.5),
-	(3, 'Chocolat', 'g', 5),
-	(4, 'Poulet', 'g', 10),
-	(5, 'Farine', 'g', 2),
-	(6, 'Poivre', 'g', 1),
+	(3, 'Chocolat', 'kg', 2.5),
+	(4, 'Poulet', 'kg', 6),
+	(5, 'Farine', 'kg', 2),
 	(7, 'Tomate', 'kg', 4),
 	(8, 'Lait', 'kg', 2),
 	(9, 'Laitue', 'kg', 1.5),
 	(10, 'Pomme', 'kg', 4),
 	(11, 'Fraise', 'kg', 7),
-	(12, 'Banane', 'kg', 4);
+	(12, 'Banane', 'kg', 3.5),
+	(13, 'Pâtes', 'kg', 3),
+	(14, 'Poivre', 'unité:cuillère à café', 2.5);
 
 -- Listage de la structure de table recipe_demo. recette
 CREATE TABLE IF NOT EXISTS `recette` (
@@ -84,12 +92,16 @@ CREATE TABLE IF NOT EXISTS `recette` (
   PRIMARY KEY (`id_recette`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `FK_recette_categorie` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recipe_demo.recette : ~2 rows (environ)
+-- Listage des données de la table recipe_demo.recette : ~6 rows (environ)
 INSERT INTO `recette` (`id_recette`, `nom`, `tempsPreparation`, `instructions`, `id_categorie`) VALUES
-	(1, 'Gâteau au chocolat', 30, 'Mélanger les ingrédients', 3),
-	(2, 'Salade césar', 10, 'Coupez le poulet et les tomates ', 1);
+	(1, 'Gâteau au chocolat', 25, 'Mélanger les ingrédients', 3),
+	(2, 'Salade César', 5, 'Mélanger les ingrédients', 1),
+	(3, 'Salade exotique', 10, 'Coupez les fruits', 3),
+	(12, 'Pâtes à la carbonara', 15, 'Faire bouillir les pâtes', 2),
+	(13, 'Verre de lait', 5, 'Faire bouillir le lait', 3),
+	(14, 'Verre d\'eau chaude', 5, 'verser de l\'eau chaude dans une tasse', 3);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
