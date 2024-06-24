@@ -43,9 +43,12 @@ CREATE TABLE IF NOT EXISTS `composant` (
   CONSTRAINT `FK_composant_recette` FOREIGN KEY (`id_recette`) REFERENCES `recette` (`id_recette`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recipe_demo.composant : ~1 rows (environ)
+-- Listage des données de la table recipe_demo.composant : ~4 rows (environ)
 INSERT INTO `composant` (`quantite`, `id_ingredient`, `id_recette`) VALUES
-	(50, 3, 1);
+	(8, 3, 1),
+	(5, 4, 2),
+	(5, 9, 2),
+	(5, 7, 2);
 
 -- Listage de la structure de table recipe_demo. ingredient
 CREATE TABLE IF NOT EXISTS `ingredient` (
@@ -81,11 +84,12 @@ CREATE TABLE IF NOT EXISTS `recette` (
   PRIMARY KEY (`id_recette`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `FK_recette_categorie` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table recipe_demo.recette : ~1 rows (environ)
+-- Listage des données de la table recipe_demo.recette : ~2 rows (environ)
 INSERT INTO `recette` (`id_recette`, `nom`, `tempsPreparation`, `instructions`, `id_categorie`) VALUES
-	(1, 'Gâteau au chocolat', 30, 'Mélanger les ingrédients', 3);
+	(1, 'Gâteau au chocolat', 30, 'Mélanger les ingrédients', 3),
+	(2, 'Salade césar', 10, 'Coupez le poulet et les tomates ', 1);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
